@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
-import pandera as pa
 import pandas as pd
-from pandera import Column, Check
+import pandera as pa
+from pandera import Check, Column
 
 from contribflow.logging import configure_logging
 
@@ -38,7 +38,7 @@ def validate(df: pd.DataFrame) -> tuple[bool, list[dict[str, Any]]]:
             {
                 "rule_name": "pandera_schema",
                 "severity": "ERROR",
-                "detected_at": datetime.now(timezone.utc).isoformat(),
+                "detected_at": datetime.now(UTC).isoformat(),
                 "sample": sample,
                 "details": f"{len(failure)} validation errors",
             }

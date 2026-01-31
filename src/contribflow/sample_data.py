@@ -13,9 +13,9 @@ COUNTRIES = ["LU", "FR", "DE", "BE"]
 
 
 def generate_daily_file(output_dir: str, day: date, n: int = 500) -> Path:
-    '''
+    """
     Génère un fichier CSV synthétique (données non réelles) simulant un export d'un système source.
-    '''
+    """
     random.seed(int(day.strftime("%Y%m%d")))
     rows = []
     for i in range(n):

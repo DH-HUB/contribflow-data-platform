@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pandas as pd
@@ -20,15 +20,15 @@ def _record_hash(row: dict) -> str:
 
 
 def load_csv_to_raw(engine: Engine, csv_path: str) -> int:
-    '''
+    """
     Charge un CSV en raw.contributions_raw (append-only, dédoublonné par record_hash).
     Idempotent : rejouer le même fichier ne duplique pas les lignes.
-    '''
+    """
     path = Path(csv_path)
     df = pd.read_csv(path)
     df["event_date"] = pd.to_datetime(df["event_date"], utc=False)
 
-    ingestion_ts = datetime.now(timezone.utc)
+    ingestion_ts = datetime.now(UTC)
     source_file = path.name
 
     records = []
@@ -55,7 +55,7 @@ def load_csv_to_raw(engine: Engine, csv_path: str) -> int:
         )
 
     insert_sql = text(
-        '''
+        """
         INSERT INTO raw.contributions_raw (
             ingestion_ts, source_file, record_hash,
             declaration_id, taxpayer_id, event_date, amount, currency,
@@ -67,7 +67,7 @@ def load_csv_to_raw(engine: Engine, csv_path: str) -> int:
             :contribution_type, :status, :country, CAST(:payload AS JSONB)
         )
         ON CONFLICT (record_hash) DO NOTHING
-        '''
+        """
     )
 
     with engine.begin() as conn:

@@ -1,6 +1,9 @@
 from __future__ import annotations
-from loguru import logger
+
 import sys
+
+from loguru import logger
+
 
 def configure_logging():
     logger.remove()
