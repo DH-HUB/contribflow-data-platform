@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+setup.cfg
+src/contribflow.egg-info/PKG-INFO
+src/contribflow.egg-info/SOURCES.txt
+src/contribflow.egg-info/dependency_links.txt
+src/contribflow.egg-info/top_level.txt
+tests/test_quality.py
+tests/test_sample_data.py

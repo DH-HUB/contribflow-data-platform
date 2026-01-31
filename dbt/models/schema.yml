@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_contributions
+    columns:
+      - name: declaration_id
+        tests: [not_null, unique]
+      - name: taxpayer_id
+        tests: [not_null]
+      - name: amount
+        tests: [not_null]
+
+  - name: dim_taxpayer
+    columns:
+      - name: taxpayer_key
+        tests: [not_null, unique]
+
+  - name: fct_contributions
+    columns:
+      - name: declaration_id
+        tests: [not_null, unique]
+      - name: taxpayer_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_taxpayer')
+              field: taxpayer_key

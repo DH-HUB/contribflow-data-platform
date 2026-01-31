@@ -1,0 +1,29 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+.htmlcov/
+coverage.xml
+
+# Env / OS
+.env
+.env.*
+.DS_Store
+
+# dbt
+dbt/target/
+dbt/logs/
+dbt_packages/
+
+# Sphinx
+docs/_build/
+
+# Airflow / logs
+airflow_logs/
+logs/
+
+# Docker / local state
+.pgdata/

@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
+
+  airflow:
+    build:
+      context: .
+      dockerfile: docker/airflow/Dockerfile
+    depends_on:
+      - postgres
+
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+      SOURCE_DIR: /opt/airflow/data/source
+
+      WAREHOUSE_DB_HOST: postgres
+      WAREHOUSE_DB_PORT: "5432"
+      WAREHOUSE_DB_NAME: warehouse
+      WAREHOUSE_DB_USER: warehouse
+      WAREHOUSE_DB_PASSWORD: warehouse
+
+      ENVIRONMENT: docker
+      DATA_DIR: /opt/contribflow/data
+      _PIP_ADDITIONAL_REQUIREMENTS: ""
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/opt/contribflow
+      - ./airflow/dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
+      - airflow_data:/opt/airflow/data
+
+    command: >
+      bash -c "
+      airflow db migrate &&
+      airflow users create --username airflow --password airflow --firstname Air --lastname Flow --role Admin --email airflow@example.com || true &&
+      airflow scheduler &
+      airflow webserver
+      "
+
+volumes:
+  pgdata:
+  airflow_logs:
+  airflow_data:
