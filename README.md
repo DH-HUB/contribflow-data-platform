@@ -216,10 +216,11 @@ cd docs
 make html
 cd _build/html
 python -m http.server 8001
+```
 
 ### Aperçu de la doc
-![Sphinx documentation](docs/screenshots/sphinx_architecture.png)
 
+![Sphinx documentation](docs/screenshots/sphinx_architecture.png)
 
 ## 9) Passage au Cloud (AWS) — blueprint
 
