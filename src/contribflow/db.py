@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from sqlalchemy import create_engine, text
 from sqlalchemy.engine import Engine
+
 from contribflow.config import settings
 
 
@@ -14,7 +15,7 @@ def make_engine(url: str | None = None) -> Engine:
     return create_engine(url, pool_pre_ping=True)
 
 
-DDL = '''
+DDL = """
 CREATE SCHEMA IF NOT EXISTS raw;
 CREATE SCHEMA IF NOT EXISTS staging;
 CREATE SCHEMA IF NOT EXISTS marts;
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS meta.data_quality_issue (
     sample            JSONB,
     details           TEXT
 );
-'''
+"""
 
 
 def init_db(engine: Engine) -> None:
