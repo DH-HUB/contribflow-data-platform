@@ -1,4 +1,6 @@
 # ContribFlow — Plateforme Data Engineering (ETL/ELT) pour contributions directes
+[![CI](https://github.com/DH-HUB/contribflow-data-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/DH-HUB/contribflow-data-platform/actions/workflows/ci.yml)
+
 
 ContribFlow est un **blueprint de plateforme data** (format “entreprise”) qui illustre la conception et l’exploitation d’un pipeline **fiable, testable et auditable** dans un contexte réglementé (secteur public / finance).  
 Le projet met en œuvre un flux complet : **ingestion → contrôles de qualité → ELT (dbt) → marts analytiques**, orchestré par **Airflow** et stocké dans **PostgreSQL**.
