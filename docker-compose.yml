@@ -22,7 +22,7 @@ services:
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
       AIRFLOW__CORE__LOAD_EXAMPLES: "false"
-      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "true"
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "false"
       SOURCE_DIR: /opt/airflow/data/source
 
       WAREHOUSE_DB_HOST: postgres
@@ -35,7 +35,7 @@ services:
       DATA_DIR: /opt/contribflow/data
       _PIP_ADDITIONAL_REQUIREMENTS: ""
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     volumes:
       - ./:/opt/contribflow
       - ./airflow/dags:/opt/airflow/dags
