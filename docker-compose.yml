@@ -2,8 +2,9 @@ services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: ${POSTGRES_SUPERUSER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_SUPERPASS:-postgres}
+
     ports:
       - "127.0.0.1:5432:5432"
 
@@ -27,9 +28,9 @@ services:
 
       WAREHOUSE_DB_HOST: postgres
       WAREHOUSE_DB_PORT: "5432"
-      WAREHOUSE_DB_NAME: warehouse
-      WAREHOUSE_DB_USER: warehouse
-      WAREHOUSE_DB_PASSWORD: warehouse
+      WAREHOUSE_DB_NAME: ${WAREHOUSE_DB_NAME:-warehouse}
+      WAREHOUSE_DB_USER: ${WAREHOUSE_DB_USER:-warehouse}
+      WAREHOUSE_DB_PASSWORD: ${WAREHOUSE_DB_PASSWORD:-warehouse}
 
       ENVIRONMENT: docker
       DATA_DIR: /opt/contribflow/data
@@ -45,7 +46,7 @@ services:
     command: >
       bash -c "
       airflow db migrate &&
-      airflow users create --username airflow --password airflow --firstname Air --lastname Flow --role Admin --email airflow@example.com || true &&
+      airflow users create --username ${AIRFLOW_UI_USER:-airflow} --password ${AIRFLOW_UI_PASSWORD:-airflow} --firstname Air --lastname Flow --role Admin --email airflow@example.com || true &&
       airflow scheduler &
       airflow webserver
       "
