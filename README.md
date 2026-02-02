@@ -243,7 +243,6 @@ python -m http.server 8001
 
 ### Terraform
 `infra/terraform/` fournit un squelette (S3 + RDS + placeholders MWAA).
-
 ---
 ##  Notes de sécurité
 
