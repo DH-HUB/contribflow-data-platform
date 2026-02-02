@@ -134,3 +134,6 @@ Observabilité & relançabilité
 - Les logs et artefacts dbt sont produits dans un chemin **writable** (`/opt/airflow/...`) pour éviter les problèmes de permissions en environnement Docker/WSL.
 - Les tables `meta.*` permettent d’expliquer « quoi / quand / combien / pourquoi » lors d’un incident.
 
+
+
+
