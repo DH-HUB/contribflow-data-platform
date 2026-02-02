@@ -136,8 +136,9 @@ Les identifiants et paramètres sont définis via des variables d’environnemen
 Avant le premier lancement, créer le fichier `.env` à partir du modèle fourni (`.env.example`), puis démarrer la stack :
 ```bash
 docker compose up -d --build
+
 ```
-## Airflow: http://localhost:8080  (airflow/airflow)
+### Airflow: http://localhost:8080  (airflow/airflow)
 
 Airflow :
 - UI : http://localhost:8080
