@@ -239,6 +239,20 @@ python -m http.server 8001
 `infra/terraform/` fournit un squelette (S3 + RDS + placeholders MWAA).
 
 ---
+##  Notes de sécurité
+
+- Données **100 % synthétiques** (aucune donnée réelle).
+- Services exposés **uniquement en local** (`127.0.0.1`).
+- Secrets gérés via **variables d’environnement** (`.env.example` fourni, `.env` ignoré).
+- Identifiants par défaut **à usage démonstration uniquement**.
+- Configuration sensible Airflow non exposée dans l’UI.
+> Les principes de sécurité sont appliqués dans un contexte **local**, à des fins de démonstration.  
+> Bonnes pratiques en production :
+> - Secrets via un **gestionnaire de secrets** (Vault, AWS Secrets Manager…)
+> - **Aucune exposition** directe de la base (réseau privé, firewall/security groups)
+> - **TLS**, rotation des identifiants, et comptes en **moindre privilège**
+
+
 
 ## 10) Évolutions possibles
 - OpenMetadata (catalogue/lineage)
