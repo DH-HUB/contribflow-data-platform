@@ -10,6 +10,7 @@ Bienvenue dans la documentation technique de ContribFlow.
    architecture
    operations
    troubleshooting
+   securite 
 
 
    

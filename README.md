@@ -127,21 +127,26 @@ les logs dbt et les artefacts (target) sont dirigés vers /opt/airflow/... (writ
 
 ### Lancer la stack
 
+Et juste au-dessus (ou juste en dessous), tu ajoutes **une seule phrase** :
+
+```md
+Les identifiants et paramètres sont définis via des variables d’environnement (voir `.env.example`).
+
 ### 4.1 Lancer la stack (Postgres + Airflow)
+Avant le premier lancement, créer le fichier `.env` à partir du modèle fourni (`.env.example`), puis démarrer la stack :
 ```bash
 docker compose up -d --build
 ```
-# Airflow: http://localhost:8080  (airflow/airflow)
+## Airflow: http://localhost:8080  (airflow/airflow)
 
 Airflow :
 - UI : http://localhost:8080
-- user/pass par défaut : `airflow / airflow`
+- identifiants : définis dans `.env` (par défaut : `airflow / airflow`)
 
 Postgres :
-- host: `localhost`
-- port: `5432`
-- db warehouse: `warehouse`
-- user/pass: `warehouse / warehouse`
+- host : localhost
+- port : 5432
+- identifiants warehouse : définis dans `.env` (par défaut : `warehouse / warehouse`)
 
 # Lancer le pipeline
 
