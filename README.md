@@ -2,10 +2,25 @@
 [![CI](https://github.com/DH-HUB/contribflow-data-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/DH-HUB/contribflow-data-platform/actions/workflows/ci.yml)
 
 
-ContribFlow est un **blueprint de plateforme data** (format “entreprise”) qui illustre la conception et l’exploitation d’un pipeline **fiable, testable et auditable** dans un contexte réglementé (secteur public / finance).  
-Le projet met en œuvre un flux complet : **ingestion → contrôles de qualité → ELT (dbt) → marts analytiques**, orchestré par **Airflow** et stocké dans **PostgreSQL**.
+# ContribFlow — Data Platform Blueprint
 
-> Les données sont **100% synthétiques** (aucune donnée personnelle réelle).
+Mini plateforme data “production-like” démontrant :
+- Orchestration : Airflow
+- ELT : dbt (staging + marts + tests)
+- Data Quality : Pandera + dbt tests
+- Auditabilité : meta tables
+- Warehouse : PostgreSQL
+- DataOps : Docker, CI GitHub Actions
+- Cloud Blueprint : AWS (S3 / RDS / MWAA / IAM)
+
+Objectif : illustrer la conception d’un pipeline fiable, testable et auditable.
+
+---
+
+ContribFlow est un blueprint de plateforme data (format “enterprise”) qui illustre la conception et l’exploitation d’un pipeline fiable, testable et auditable dans un contexte réglementé (secteur public / finance).
+Le projet met en œuvre un flux complet : ingestion → contrôles de qualité → ELT (dbt) → marts analytiques, orchestré par Airflow et stocké dans PostgreSQL.
+
+> Les données sont 100% synthétiques (aucune donnée personnelle réelle).
 
 ---
 
