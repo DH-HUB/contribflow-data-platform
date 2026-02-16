@@ -1,9 +1,6 @@
 # ContribFlow — Plateforme Data Engineering (ETL/ELT) pour contributions directes
 [![CI](https://github.com/DH-HUB/contribflow-data-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/DH-HUB/contribflow-data-platform/actions/workflows/ci.yml)
 
-
-# ContribFlow — Data Platform Blueprint
-
 Mini plateforme data “production-like” démontrant :
 - Orchestration : Airflow
 - ELT : dbt (staging + marts + tests)
